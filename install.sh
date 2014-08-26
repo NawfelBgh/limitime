@@ -24,4 +24,4 @@ chmod 775 consumed
 chmod g+s limits
 chmod g+s consumed
 
-echo "* * * * * cd $dist && ./limitime.sh # limitime-line " >> /var/spool/cron/root
+{ crontab -l; echo "* * * * * cd $dist && ./limitime.sh # limitime-line "; } | crontab -

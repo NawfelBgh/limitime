@@ -12,5 +12,4 @@ then
 fi
 
 rm -r $dist
-grep limitime-line /var/spool/cron/root -v > /var/spool/cron/root-temp-limitime
-mv -f /var/spool/cron/root-temp-limitime /var/spool/cron/root 
+crontab -l | grep -v limitime-line | crontab -
