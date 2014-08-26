@@ -46,7 +46,12 @@ do
             echo 0 > consumed/$username
         fi
         weekday=$(date +%u)
-        timepermited=$(cat limits/$username|nth_or $weekday 0)
+        # blank lines are interpreted as INFINITY (there are less than 9999min in a day)
+            timepermited=$(cat limits/$username|nth_or $weekday 9999) 
+            if [ -z "$(echo $timepermited|sed 's/ //g')" ]
+            then
+                timepermited=9999
+            fi
         timeconsumed=$(cat consumed/$username)
         if [ $(($timeconsumed >= $timepermited)) = 1 ]
         then
