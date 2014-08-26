@@ -10,7 +10,7 @@ limit users' sessions time
     # DIRECTORY is optional, it defaults to /limitime
 ```
 
-Installing in /limitime for example creates this directory tree:
+Installing in `/limitime` for example creates this directory tree:
 
     /limitime/
     ├── consumed
@@ -36,16 +36,16 @@ The installation also adds a cron job which executes `limitime.sh` every minute
 
 ### Note
 
-This section is fpr the members of the `admin` groupe. No root privileges are required
+This section is for the members of the `admin` groupe. No root privileges are required
 
-To limit the user `foo` login time to 60 minutes every Monday and Friday and 30 minutes in the other
+To limit the user `foo` login time to 60 minutes on Monday, 50 minutes on Friday and 30 minutes for the other
 days of the week, create a file called `foo` in the directory `limits` with the content:
 
     60
     30
     30
     30
-    60
+    50
     30
     30
 
