@@ -28,16 +28,21 @@ nth_or() {
     fi
 }
 
+critical=$1
+if [ -z "$critical" ]
+then
+    critical=5
+fi
 username=$(whoami)
 while true
 do
     consumed=$(cat consumed/$username)
     weekday=$(date +%u)
-    allowed=$(cat limits/$username|nth_or $weekday 0)
+    allowed=$(cat limits/$username|nth_or $weekday 9999) # 9999 is infinity
     remaining=$(($allowed - $consumed))
-    if [ $(($remaining < 5)) = 1 ]
+    if [ $(($remaining < $critical)) = 1 ]
     then
-        notify-send "remaining $remaining minutes"
+        notify-send "Remaining $remaining minutes"
     fi
     sleep 60
 done
