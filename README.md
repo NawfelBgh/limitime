@@ -22,10 +22,10 @@ Installing in `/limitime` for example creates this directory tree:
 
 where:
 
-    drw-rwSr--. 2 root admin 4096 Aug 26 14:05 consumed
-    -rwxr-xr-x. 1 root root   726 Aug 26 14:05 limitime-notify.sh
-    -rwxr-xr-x. 1 root root  1455 Aug 26 14:05 limitime.sh
-    drw-rwSr--. 2 root admin 4096 Aug 26 14:05 limits
+    drw-rwsr--. 2 root admin 4096 Aug 26 14:05 consumed
+    -r-xr-xr-x. 1 root root   726 Aug 26 14:05 limitime-notify.sh
+    -r-xr-xr-x. 1 root root  1455 Aug 26 14:05 limitime.sh
+    drw-rwsr--. 2 root admin 4096 Aug 26 14:05 limits
 
 Any member of the groupe `admin` can manage files inside `consumed`
 and `limits`
