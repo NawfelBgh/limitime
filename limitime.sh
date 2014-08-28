@@ -6,33 +6,7 @@ umask 002
 
 # echo the $1 nth line of stdin
 # if that line doesn't exist than echo $2
-nth_or() {
-    local i
-    local line
-    local jobdone
-    i=$1
-    jobdone=0
-    while [ "$i" != 1 ]
-    do
-        if read line
-        then
-            i=$(($i-1))
-        else
-            i=1
-            echo $2
-            jobdone=1
-        fi
-    done
-    if [ $jobdone = 0 ]
-    then
-        if read line
-        then
-            echo $line
-        else
-            echo $2
-        fi
-    fi
-}
+nth_or() { (cat; echo; )|head -n $1 | tail -n 1 | sed 's/^\s*$/'$2'/'; }
 
 for username in $(ls /home)
 do
@@ -47,13 +21,9 @@ do
         fi
         weekday=$(date +%u)
         # blank lines are interpreted as INFINITY (there are less than 9999min in a day)
-            timepermited=$(cat limits/$username|nth_or $weekday 9999) 
-            if [ -z "$(echo $timepermited|sed 's/ //g')" ]
-            then
-                timepermited=9999
-            fi
+        timepermited=$(cat limits/$username|nth_or $weekday 9999) 
         timeconsumed=$(cat consumed/$username)
-        if [ $(($timeconsumed >= $timepermited)) = 1 ]
+        if [ $(($timeconsumed > $timepermited)) = 1 ]
         then
             # exit users session
             pkill -u $username -KILL
