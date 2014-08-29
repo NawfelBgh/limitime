@@ -23,7 +23,7 @@ do
         # blank lines are interpreted as INFINITY (there are less than 9999min in a day)
         timepermited=$(cat limits/$username|nth_or $weekday 9999) 
         timeconsumed=$(cat consumed/$username)
-        if [ $(($timeconsumed > $timepermited)) = 1 ]
+        if [ $(($timeconsumed >= $timepermited)) = 1 ]
         then
             # exit users session
             pkill -u $username -KILL
