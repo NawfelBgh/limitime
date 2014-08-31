@@ -1,9 +1,9 @@
 # limitime
 
-This program let you define time limits to the users of a linux machine.
+This program lets you define time limits to the users of a linux machine.
 It launchs a task (cron job) which looks every minute for logged on users and logs them out
-if they exceeded their limits. A user can still login after being logged out but this program
-will log him out again when it checks for users in the next minute.
+if they have exceeded their limits. A user can still login after being logged out but will be
+logged out again when this program checks in the next minute.
 
 This program doesn't have a GUI. It is configurable via simple plain text files.
 
@@ -94,4 +94,4 @@ This program is modeled after [this explanation](http://forums.linuxmint.com/vie
 
 Tested to work on Lubuntu 14.04.1 and Fedora 20.
 
-In Lubuntu, I needed to install `send-notify` separately, because it was not installed by default.
+In Lubuntu, I needed to install `send-notify` since it was not installed by default.
