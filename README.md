@@ -68,7 +68,7 @@ The absense of the file `limits/foo` means that no restrictions are defined for 
 A blank line in that file means INFINITY. And numbers prepended with a zero are interpreted in octal.
 
 This program will then maintain the amount of time (in minutes) consumed by the user `foo` 
-during the same day in the directory `consumed/foo`.
+during the same day in the file `consumed/foo`.
 
 The permission are set so that all users can read the content of the files inside `limits` and `consumed`.
 
@@ -77,7 +77,7 @@ The permission are set so that all users can read the content of the files insid
 *This section is for users with limited time who want to be notified before they are logged out*
 
 The script `limitime-notify.sh` can be executed by any user. It notifies him when less than
-N minutes are left. For notification it uses `send-notify`.
+`N` minutes are left. For notification it uses `send-notify`.
 
 ```sh
     limitime-notify.sh N # Notify the user when he has N minutes remaining
